@@ -17,7 +17,7 @@ yvalues = np.linspace(0,3,100)
 
 xx, yy = np.meshgrid(xvalues, yvalues)
 zz = f(xx, yy)
-cs = plt.contour(zz, levels=100)
+#cs = plt.contour(zz, levels=100)
 
 """
 init_g = [1,1]
@@ -29,3 +29,8 @@ plt.clabel(cs)
 """
 plt.show()
 
+
+# TASK 2
+
+gamma = lambda t: np.sqrt(4*t**2 + 9*t**4)
+print(quad(gamma, -2,1))[0]
