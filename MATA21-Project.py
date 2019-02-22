@@ -29,4 +29,3 @@ plt.clabel(cs)
 """
 plt.show()
 
-# TASK 2
