@@ -1,28 +1,32 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.optimize import fmin
+from scipy.integrate import quad
+
 
 def f(x, y):
     return 8*x*y - 4*x**2*y - 2*x*y**2 + x**2*y**2
 
-def plot_contour():
-    xvalues = np.linspace(-10,10,100)
-    yvalues = np.linspace(-10,10,100)
 
-    xx, yy = np.meshgrid(xvalues, yvalues)
-    zz = f(xx, yy)
-
-    plt.contour(zz, levels=200)
-    plt.show()
+def f_wrapp(x0):
+    return f(x0[0], x0[1])*-1
 
 
-def find_minima():
-    from scipy.optimize import fmin
+xvalues = np.linspace(0,3,100)
+yvalues = np.linspace(0,3,100)
 
-    def f_wrapp(x0):
-        return f(x0[0], x0[1])*-1
-    init_g = [0,0]
+xx, yy = np.meshgrid(xvalues, yvalues)
+zz = f(xx, yy)
+cs = plt.contour(zz, levels=100)
 
-    return fmin(f_wrapp, init_g)
+"""
+init_g = [1,1]
+solution, iterates = fmin(f_wrapp, init_g, retall=True)
+x, y = zip(*iterates)
+plt.plot(x, y, "ko")
+plt.plot(x, y, "k:")
+plt.clabel(cs)
+"""
+plt.show()
 
-
-print(find_minima())
+# TASK 2
