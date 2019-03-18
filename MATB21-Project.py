@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.integrate import quad
+from mpl_toolkits.mplot3d import Axes3D
 
 
 def f(x, y):
